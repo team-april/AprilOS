@@ -7,11 +7,12 @@
 
 int main()
 {
+    char argv[1024];
     int str[100];
     while(1)
     {
         prompt();
-        cdr();
+        scanf("%s",argv);
     }
 }
 
