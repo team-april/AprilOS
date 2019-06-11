@@ -3,7 +3,7 @@
 #define MAX_COMMAND 1024
 
 void strDis();
-void command(char(*comm)[MAX_COMMAND],int i);
-void cdr(const char* comm);
+void command(char *comm[MAX_COMMAND],int i);
+void cdr(char * comm[MAX_COMMAND]);
 
 #endif
