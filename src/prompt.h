@@ -3,4 +3,4 @@
 
 void prompt();
 
-#endif PROMPT_H_
+#endif

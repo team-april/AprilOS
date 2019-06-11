@@ -3,15 +3,15 @@
 #include <unistd.h>
 
 #include "prompt.h"
+#include "command.h"
 
 int main()
 {
     char argv[1024];
-    int str[100];
     while(1)
     {
         prompt();
-        scanf("%s",argv);
+        strDis();
     }
 }
 
