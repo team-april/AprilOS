@@ -52,8 +52,6 @@ void strDis()
 //comm 을 받아서 문자에 맞게 명령어 실행
 void command(char (*comm)[MAX_COMMAND], int i)
 {
-<<<<<<< HEAD
-=======
     if(!strcmp(comm[0],"cdr")){
         if(i==1) cdr(NULL);
         else if(i != 2 ){
@@ -66,7 +64,6 @@ void command(char (*comm)[MAX_COMMAND], int i)
         }
     }
 
->>>>>>> eadf59e95ff10c6266223275d498293460f6a171
 }
 
 
