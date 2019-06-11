@@ -1,7 +1,9 @@
 #ifndef COMMAND_H_
 #define COMMAND_H_
+#define MAX_COMMAND 1024
 
 void strDis();
-void command();
+void command(char(*comm)[MAX_COMMAND],int i);
+void cdr(const char* comm);
 
 #endif
