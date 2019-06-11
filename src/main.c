@@ -3,7 +3,6 @@
 #include <unistd.h>
 
 #include "prompt.h"
-#include "cdr.h"
 
 int main()
 {
