@@ -9,6 +9,8 @@
 #include <unistd.h>
 #include <string.h>
 
+#include "command.h"
+
 #define MAX_COMMAND 1024
 
 // 받은 문자열 쪼개기
@@ -42,6 +44,5 @@ void strDis()
 //comm 을 받아서 문자에 맞게 명령어 실행
 void command()
 {
-
 }
 
