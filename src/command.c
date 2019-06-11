@@ -13,6 +13,10 @@
 
 #define MAX_COMMAND 1024
 
+
+void cdr(const char* comm){
+    printf("cdr success\n");
+}
 // 받은 문자열 쪼개기
 void strDis()
 {
@@ -38,11 +42,31 @@ void strDis()
         printf("\n");
         }
     }
+
+    command(*comm, i);
+
+
 }
 
 
 //comm 을 받아서 문자에 맞게 명령어 실행
-void command()
+void command(char (*comm)[MAX_COMMAND], int i)
 {
+<<<<<<< HEAD
+=======
+    if(!strcmp(comm[0],"cdr")){
+        if(i==1) cdr(NULL);
+        else if(i != 2 ){
+            printf("usage : cdr <dir name | path> \n");
+
+        }
+        else
+        {
+            cdr(comm[1]);
+        }
+    }
+
+>>>>>>> eadf59e95ff10c6266223275d498293460f6a171
 }
+
 
