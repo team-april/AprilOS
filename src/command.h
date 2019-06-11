@@ -4,6 +4,5 @@
 
 void strDis();
 void command(char *comm[MAX_COMMAND],int i);
-void cdr(char * comm[MAX_COMMAND]);
 
 #endif
