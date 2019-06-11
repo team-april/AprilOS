@@ -49,9 +49,5 @@ void command(char * comm[MAX_COMMAND], int i)
 
 void cdr(char * comm[MAX_COMMAND])
 {
-    printf("comm1:%s\n",comm[1]);
-    if(chdir(comm[1]))
-        printf("error");
-    else
-        chdir(comm[1]);
+    chdir(comm[1]);
 }
