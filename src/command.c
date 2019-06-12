@@ -10,9 +10,9 @@
 #include <string.h>
 
 #include "command.h"
+#include "cdr.h"
 
 #define MAX_COMMAND 1024
-
 
 // 받은 문자열 쪼개기
 void strDis()
@@ -40,11 +40,14 @@ void strDis()
 void command(char * comm[MAX_COMMAND], int i)
 {
     if(!strcmp(comm[0],"cdr"))
-    {}
+    { 
+        cdr(comm);
+    }
     else if(!strcmp(comm[0],"lst"))
     {}
     else if(!strcmp(comm[0],"cdr"))
-    {}
+    {
+    }
     else if(!strcmp(comm[0],"cdr"))
     {}
     else if(!strcmp(comm[0],"cdr"))
@@ -67,7 +70,7 @@ void command(char * comm[MAX_COMMAND], int i)
     {}
     else
     {
-        printf("%s is not command\n",comm[0]);
+        printf(" \"%s\" is not command\n",comm[0]);
     }
 
 }
