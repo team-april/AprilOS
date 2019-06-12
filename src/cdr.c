@@ -59,7 +59,7 @@ void OpenBookMark(int bookNum)
     fgets(buff,MAX_PATH,fp);
     for(int i=0;i<MAX_PATH;i++)
     {
-        if(buff[i] == ':' && checkslash < 2)
+        if(buff[i] == '/' && checkslash < 2)
             checkslash++;
         if(checkslash == 2)
         {
@@ -86,7 +86,7 @@ void SaveBookMark(char *comm[MAX_COMMAND])
     buff = (char*)malloc(sizeof(char)*MAX_COMMAND);
     getcwd(path,MAX_PATH);
     fp=fopen(PATH, "a");
-    fprintf(fp,"%s:%s\n",comm[2],path);
+    fprintf(fp,"%s/%s\n",comm[2],path);
     fclose(fp);
     free(buff);
 }
