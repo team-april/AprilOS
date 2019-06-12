@@ -112,6 +112,8 @@ void BookMarkList(char *comm[MAX_COMMAND])
     printf("==================================\n");
     printf("\t[ Book Mark LIST ]\n");
     printf("==================================\n");
+    printf("  BM name | BM PATH\n");
+    printf("==================================\n");
     while (fgets(buff, MAX_PATH,fp) != NULL)
     {
         printf(" [%d] %s",i,buff);

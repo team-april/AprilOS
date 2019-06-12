@@ -45,7 +45,7 @@ void command(char * comm[MAX_COMMAND], int i)
     }
     else if(!strcmp(comm[0],"lst"))
     {}
-    else if(!strcmp(comm[0],"cdr"))
+    else if(!strcmp(comm[0],"cls"))
     {
     }
     else if(!strcmp(comm[0],"cdr"))
