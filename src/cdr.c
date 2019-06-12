@@ -77,6 +77,7 @@ void OpenBookMark(int bookNum)
 }
 
 
+
 void SaveBookMark(char *comm[MAX_COMMAND])
 {
     FILE *fp;
@@ -85,40 +86,46 @@ void SaveBookMark(char *comm[MAX_COMMAND])
     buff = (char*)malloc(sizeof(char)*MAX_COMMAND);
     getcwd(path,MAX_PATH);
     fp=fopen(PATH, "a");
-    memset(buff, 0, MAX_COMMAND); // init buff
-    fgets(buff,MAX_PATH,fp);
     fprintf(fp,"%s:%s\n",comm[2],path);
     fclose(fp);
     free(buff);
 }
-
 void cdrMAN()
 {
     printf(" usage : cdr [-option] < dir neme | bookmark num >\n");
     printf(" -option :\n");
-    printf("\t -w : \n");
-    printf("\t -r : \n");
+    printf("\t -w : cdr -w <BOOK MARK NAME>\n");
+    printf("\t    This option is save bookmark path.\n");
+    printf("\t -r : cdr -r <BOOK MARK NAME>\n");
+    printf("\t    This option is load bookmark.\n");
+    printf("\t -b : cdr -b\n");
+    printf("\t    This option is showing bookmark list.\n");
 }
 
 
 void BookMarkList(char *comm[MAX_COMMAND])
 {
+
     FILE *fp;
     char * buff;
     int i=1;
     buff = (char*)malloc(sizeof(char)*MAX_COMMAND);
-    int checkslash = 0;
+
     fp=fopen(PATH, "r");
+
     printf("==================================\n");
     printf("\t[ Book Mark LIST ]\n");
     printf("==================================\n");
     printf("  BM name | BM PATH\n");
     printf("==================================\n");
+
     while (fgets(buff, MAX_PATH,fp) != NULL)
     {
         printf(" [%d] %s",i,buff);
         i++;
     }
+
     fclose(fp);
     free(buff);
+
 }

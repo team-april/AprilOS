@@ -74,11 +74,4 @@ void command(char * comm[MAX_COMMAND], int i)
     }
 
 }
-<<<<<<< HEAD
 
-void cdr(char * comm[MAX_COMMAND])
-{
-    chdir(comm[1]);
-}
-=======
->>>>>>> jun
