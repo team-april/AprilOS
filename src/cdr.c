@@ -1,3 +1,9 @@
+/*******************************************************/
+/*file name : cdr.c,cdr.h                              */
+/*made by   : jun                                      */
+/*date      : 2019.06.12                               */
+/*This function is change directory and bookmark       */
+/*******************************************************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -46,34 +52,79 @@ void cdr(char * comm[MAX_COMMAND])
     }
 }
 
-void OpenBookMark(int bookNum)
+void OpenBookMark(char * comm[MAX_COMMAND])
 {
     FILE *fp;
     char * buff;
     char * print_buff;
+    char * buff_temp;
     buff = (char*)malloc(sizeof(char)*MAX_COMMAND);
+    buff_temp = (char*)malloc(sizeof(char)*MAX_COMMAND);
     print_buff = (char*)malloc(sizeof(char)*MAX_COMMAND);
     int checkslash = 0;
     int j=0;
-    fp=fopen(PATH, "r");
-    fgets(buff,MAX_PATH,fp);
-    for(int i=0;i<MAX_PATH;i++)
+    int searchNUM=1;
+
+
+    fp=fopen(PATH,"r");
+    while (fgets(buff, MAX_PATH,fp) != NULL)
     {
-        if(buff[i] == '/' && checkslash < 2)
+        if(buff!=NULL){
+            for(int i=0;i<MAX_PATH;i++)
+            {
+                if(buff[i] != '/' )
+                {
+                    buff_temp[j]=buff[i];
+                    j++;
+                }
+                else 
+                    break;
+            }
+            if(strcmp(comm[2],buff_temp))
+            {
+                searchNUM++;
+            }
+            else
+            {
+                break;
+            }
+        }
+        j=0;
+        checkslash=0;
+        memset(buff_temp,'\0',MAX_COMMAND);
+    }
+    fclose(fp);
+
+    
+    fp=fopen(PATH, "r");
+    for(int i=0;i<searchNUM;i++)
+    {
+        memset(buff,'\0',MAX_COMMAND);
+        fgets(buff,MAX_PATH,fp);
+    }
+    
+
+    memset(buff_temp,'\0',MAX_COMMAND);
+    j=0;
+
+    for(int i=0;i<=MAX_PATH;i++)
+    {
+        if(buff[i] == '/' && checkslash < 1)
             checkslash++;
-        if(checkslash == 2)
+        else if(checkslash == 1)
         {
-            print_buff[j]=buff[i];
+            buff_temp[j]=buff[i];
             j++;
         }
     }
-    if(strlen(print_buff)!=0)
-        print_buff[strlen(print_buff)-1]='\0';
-    printf("%s!\n",print_buff);
-    chdir(print_buff);
+
+    
+    if(strlen(buff_temp)!=0)
+        buff_temp[strlen(buff_temp)-1]='\0';
+    chdir(buff_temp);
     fclose(fp);
     free(buff);
-    free(print_buff);
+    free(buff_temp);
 }
 
 
@@ -83,12 +134,50 @@ void SaveBookMark(char *comm[MAX_COMMAND])
     FILE *fp;
     char path[MAX_PATH];
     char * buff;
+    char * buff_temp;
+    int checkslash=0,j=0;
+    int flag = 0;
     buff = (char*)malloc(sizeof(char)*MAX_COMMAND);
+    buff_temp = (char*)malloc(sizeof(char)*MAX_COMMAND);
     getcwd(path,MAX_PATH);
-    fp=fopen(PATH, "a");
-    fprintf(fp,"%s/%s\n",comm[2],path);
+    fp=fopen(PATH,"r");
+    fgets(buff,MAX_PATH,fp);
+    while (fgets(buff, MAX_PATH,fp) != NULL)
+    {
+        if(buff!=NULL){
+            for(int i=0;i<MAX_PATH;i++)
+            {
+                if(buff[i] != '/' && checkslash < 2)
+                {
+                    buff_temp[j]=buff[i];
+                    j++;
+                }
+                else if(buff[i] == '/')
+                    checkslash++;
+                if(checkslash == 2)
+                    break;
+            }
+            if(!strcmp(comm[2],buff_temp))
+            {
+                flag = 1;
+                break;
+            }
+            j=0;
+            checkslash=0;
+            memset(buff_temp,'\0',MAX_COMMAND);
+        }
+    }
     fclose(fp);
+    if(flag == 1) 
+        printf(" \"%s\" already exists.\n",buff_temp);
+    else
+    {
+        fp=fopen(PATH, "a");
+        fprintf(fp,"%s/%s\n",comm[2],path);
+        fclose(fp);
+    }
     free(buff);
+    free(buff_temp);
 }
 void cdrMAN()
 {
@@ -111,20 +200,26 @@ void BookMarkList(char *comm[MAX_COMMAND])
     int i=1;
     buff = (char*)malloc(sizeof(char)*MAX_COMMAND);
 
-    fp=fopen(PATH, "r");
+    fp=fopen(PATH, "a");
+    fclose(fp);
 
-    printf("==================================\n");
-    printf("\t[ Book Mark LIST ]\n");
-    printf("==================================\n");
+    fp=fopen(PATH,"r");
+
+    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+    printf("\t\t\t[ Book Mark LIST ]  \n");
+    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
     printf("  BM name | BM PATH\n");
-    printf("==================================\n");
+    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
 
     while (fgets(buff, MAX_PATH,fp) != NULL)
     {
-        printf(" [%d] %s",i,buff);
+        if(buff != NULL && i == 1)
+            ;
+        else if(buff != NULL && i != 1)
+            printf(" [%d] %s",i-1,buff);
         i++;
     }
-
+    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
     fclose(fp);
     free(buff);
 
