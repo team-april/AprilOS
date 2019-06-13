@@ -11,6 +11,7 @@
 
 #include "command.h"
 #include "cdr.h"
+#include "mkr.h"
 
 #define MAX_COMMAND 1024
 
@@ -43,10 +44,12 @@ void command(char * comm[MAX_COMMAND], int i)
     { 
         cdr(comm);
     }
-    else if(!strcmp(comm[0],"lst"))
-    {}
-    else if(!strcmp(comm[0],"cls"))
+    else if(!strcmp(comm[0],"sls"))
     {
+    }
+    else if(!strcmp(comm[0],"mkr"))
+    {
+        mkr(comm,i);
     }
     else if(!strcmp(comm[0],"cdr"))
     {}
