@@ -32,13 +32,12 @@ int cpy(char * comm[MAX_PATH],int argc)
         return 0;
     }
 
-    if(stat(comm[2],&st)<0){
-        perror("stat error");
-        return 0;
-    }
 
     if(access(comm[2],0)==0){
-        printf("exsist\n");
+        if(stat(comm[2],&st)<0){
+            perror("stat error");
+            return 0;
+        }
         if(S_ISDIR(st.st_mode)){
             printf("dir\n");
             char * a[2];
@@ -78,6 +77,19 @@ int cpy(char * comm[MAX_PATH],int argc)
                 }
             }
         }
+    }else{
+        if((fd2=open(comm[2],O_WRONLY|O_CREAT|O_TRUNC,0644))==-1){
+            printf("something wrong. can't open file");
+            return 0;
+        }
+
+
+        while(read(fd1, buf, 1)){
+            write(fd2, buf, 1);
+        }
+
+        return 0;
+
     }
 
     free(buf);
