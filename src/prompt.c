@@ -10,6 +10,7 @@
 #include "prompt.h"
 
 #define MAX_PATH 100
+#define COLOR_CYAN "x1b[36m"
 
 void prompt()
 {
@@ -35,7 +36,7 @@ void prompt()
            j++;
        }
     }
-    printf("[ ~%s ] A)> ",print_buff);
+    printf("[" "\033[1;36m ~%s \033[0m" "] A)> ",print_buff);
 
     free(buff);
     free(print_buff);

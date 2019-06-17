@@ -10,10 +10,14 @@
 #include <string.h>
 
 #include "command.h"
+<<<<<<< HEAD
 #include "sls.h"
+=======
+#include "cdr.h"
+#include "mkr.h"
+>>>>>>> f7c49275b40ba632dce183e2676cf62d4aec06af
 
 #define MAX_COMMAND 1024
-
 
 // 받은 문자열 쪼개기
 void strDis()
@@ -41,6 +45,7 @@ void strDis()
 void command(char * comm[MAX_COMMAND], int i)
 {
     if(!strcmp(comm[0],"cdr"))
+<<<<<<< HEAD
     {}
     else if(!strcmp(comm[0],"sls"))
     {
@@ -48,6 +53,18 @@ void command(char * comm[MAX_COMMAND], int i)
     }
     else if(!strcmp(comm[0],"cdr"))
     {}
+=======
+    { 
+        cdr(comm);
+    }
+    else if(!strcmp(comm[0],"sls"))
+    {
+    }
+    else if(!strcmp(comm[0],"mkr"))
+    {
+        mkr(comm,i);
+    }
+>>>>>>> f7c49275b40ba632dce183e2676cf62d4aec06af
     else if(!strcmp(comm[0],"cdr"))
     {}
     else if(!strcmp(comm[0],"cdr"))
@@ -70,7 +87,11 @@ void command(char * comm[MAX_COMMAND], int i)
     {}
     else
     {
-        printf("%s is not command\n",comm[0]);
+        printf(" \"%s\" is not command\n",comm[0]);
     }
 
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> f7c49275b40ba632dce183e2676cf62d4aec06af
