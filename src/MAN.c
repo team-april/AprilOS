@@ -9,3 +9,7 @@ void pdrMAN()
 {
     ;
 }
+void shwMAN()
+{
+
+}

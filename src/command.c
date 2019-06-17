@@ -15,6 +15,7 @@
 #include "mkr.h"
 #include "chm.h"
 #include "pdr.h"
+#include "shw.h"
 
 #define MAX_COMMAND 1024
 
@@ -63,8 +64,10 @@ void command(char * comm[MAX_COMMAND], int i)
     {
         pdr(i);
     }
-    else if(!strcmp(comm[0],"cdr"))
-    {}
+    else if(!strcmp(comm[0],"shw"))
+    {
+        shw(comm,i);
+    }
     else if(!strcmp(comm[0],"cdr"))
     {}
     else if(!strcmp(comm[0],"cdr"))

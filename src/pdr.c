@@ -20,4 +20,6 @@ void pdr(int argc)
     }
     else
         pdrMAN();
+
+    free(buff);
 }

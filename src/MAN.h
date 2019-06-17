@@ -3,5 +3,6 @@
 
 void chmMAN();
 void pdrMAN();
+void shwMAN();
 #endif
 
