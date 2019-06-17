@@ -10,7 +10,7 @@
 #include <unistd.h>
 #define MAX_COMMAND 1024
 #define MAX_PATH 1024
-#define PATH "/home/jun/AprilOS/usr/bookmark"
+#define PATH "/home/sup/AprilOS/usr/bookmark"
 #define HOME_PATH "/home/jun/AprilOS/src"
 
 #include "cdr.h"
