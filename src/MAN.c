@@ -13,3 +13,7 @@ void shwMAN()
 {
 
 }
+void mkrMAN()
+{
+
+}

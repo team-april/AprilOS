@@ -26,7 +26,7 @@ void strDis()
     fgets(str,MAX_COMMAND,stdin);
     if(strlen(str)!=0)
         str[strlen(str)-1]='\0';
-    char* comm[100] = {NULL,};
+    char* comm[MAX_COMMAND] = {NULL,};
     int i=0;
 
     if(strlen(str)!=0 && str[0] != ' '){
