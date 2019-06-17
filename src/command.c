@@ -10,6 +10,7 @@
 #include <string.h>
 
 #include "command.h"
+#include "sls.h"
 
 #define MAX_COMMAND 1024
 
@@ -41,8 +42,10 @@ void command(char * comm[MAX_COMMAND], int i)
 {
     if(!strcmp(comm[0],"cdr"))
     {}
-    else if(!strcmp(comm[0],"lst"))
-    {}
+    else if(!strcmp(comm[0],"sls"))
+    {
+        sls(comm,i);
+    }
     else if(!strcmp(comm[0],"cdr"))
     {}
     else if(!strcmp(comm[0],"cdr"))
@@ -71,11 +74,3 @@ void command(char * comm[MAX_COMMAND], int i)
     }
 
 }
-<<<<<<< HEAD
-
-void cdr(char * comm[MAX_COMMAND])
-{
-    chdir(comm[1]);
-}
-=======
->>>>>>> jun
