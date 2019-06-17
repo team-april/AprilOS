@@ -13,6 +13,8 @@
 #include "sls.h"
 #include "cdr.h"
 #include "mkr.h"
+#include "chm.h"
+#include "pdr.h"
 
 #define MAX_COMMAND 1024
 
@@ -49,15 +51,18 @@ void command(char * comm[MAX_COMMAND], int i)
     {
         sls(comm,i);
     }
-    else if(!strcmp(comm[0],"cdr"))
+    else if(!strcmp(comm[0],"chm"))
     { 
+        chm(comm,i);
     }
     else if(!strcmp(comm[0],"mkr"))
     {
         mkr(comm,i);
     }
-    else if(!strcmp(comm[0],"cdr"))
-    {}
+    else if(!strcmp(comm[0],"pdr"))
+    {
+        pdr(i);
+    }
     else if(!strcmp(comm[0],"cdr"))
     {}
     else if(!strcmp(comm[0],"cdr"))
