@@ -10,12 +10,9 @@
 #include <string.h>
 
 #include "command.h"
-<<<<<<< HEAD
 #include "sls.h"
-=======
 #include "cdr.h"
 #include "mkr.h"
->>>>>>> f7c49275b40ba632dce183e2676cf62d4aec06af
 
 #define MAX_COMMAND 1024
 
@@ -45,26 +42,20 @@ void strDis()
 void command(char * comm[MAX_COMMAND], int i)
 {
     if(!strcmp(comm[0],"cdr"))
-<<<<<<< HEAD
-    {}
+    {
+        cdr(comm);
+    }
     else if(!strcmp(comm[0],"sls"))
     {
         sls(comm,i);
     }
     else if(!strcmp(comm[0],"cdr"))
-    {}
-=======
     { 
-        cdr(comm);
-    }
-    else if(!strcmp(comm[0],"sls"))
-    {
     }
     else if(!strcmp(comm[0],"mkr"))
     {
         mkr(comm,i);
     }
->>>>>>> f7c49275b40ba632dce183e2676cf62d4aec06af
     else if(!strcmp(comm[0],"cdr"))
     {}
     else if(!strcmp(comm[0],"cdr"))
@@ -91,7 +82,3 @@ void command(char * comm[MAX_COMMAND], int i)
     }
 
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> f7c49275b40ba632dce183e2676cf62d4aec06af
