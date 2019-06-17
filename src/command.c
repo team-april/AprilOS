@@ -56,6 +56,7 @@ void command(char * comm[MAX_COMMAND], int i)
     else if(!strcmp(comm[0],"cpy"))
     { 
         cpy(comm,i);
+    }
     else if(!strcmp(comm[0],"chm"))
     { 
         chm(comm,i);

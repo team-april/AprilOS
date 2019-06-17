@@ -10,10 +10,11 @@
 #include <unistd.h>
 #define MAX_COMMAND 1024
 #define MAX_PATH 1024
-#define PATH "/home/sup/AprilOS/usr/bookmark"
+#define PATH "/home/jun/AprilOS/usr/bookmark"
 #define HOME_PATH "/home/jun/AprilOS/src"
 
 #include "cdr.h"
+#include "MAN.h"
 
 void cdr(char * comm[MAX_COMMAND])
 {
@@ -178,17 +179,6 @@ void SaveBookMark(char *comm[MAX_COMMAND])
     }
     free(buff);
     free(buff_temp);
-}
-void cdrMAN()
-{
-    printf(" usage : cdr [-option] < dir neme | bookmark num >\n");
-    printf(" -option :\n");
-    printf("\t -w : cdr -w <BOOK MARK NAME>\n");
-    printf("\t    This option is save bookmark path.\n");
-    printf("\t -r : cdr -r <BOOK MARK NAME>\n");
-    printf("\t    This option is load bookmark.\n");
-    printf("\t -b : cdr -b\n");
-    printf("\t    This option is showing bookmark list.\n");
 }
 
 
