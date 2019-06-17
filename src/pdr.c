@@ -1,3 +1,9 @@
+/*******************************************************/
+/*file name : pdr.c,pdr.h                              */
+/*made by   : jun                                      */
+/*date      : 2019.06.17                               */
+/*This function is showing current  directory.         */
+/*******************************************************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>

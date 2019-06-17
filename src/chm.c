@@ -1,5 +1,5 @@
 /*******************************************************/
-/*file name : mkr.c,mkr.h                              */
+/*file name : chm.c,chm.h                              */
 /*made by   : jun                                      */
 /*date      : 2019.06.17                               */
 /*This function is change permisions.                  */

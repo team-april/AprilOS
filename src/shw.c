@@ -1,3 +1,9 @@
+/*******************************************************/
+/*file name : shw.c,shw.h                              */
+/*made by   : jun                                      */
+/*date      : 2019.06.17                               */
+/*This function is showing file contents               */
+/*******************************************************/
 #include <stdio.h>
 #include <fcntl.h>
 #include <stdlib.h>
