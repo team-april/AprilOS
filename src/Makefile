@@ -1,5 +1,5 @@
-main : prompt.o main.o command.o sls.o cdr.o mkr.o cpy.o
-	gcc -o main prompt.o main.o command.o sls.o cdr.o mkr.o cpy.o
+main : prompt.o main.o command.o sls.o cdr.o mkr.o MAN.o chm.o pdr.o shw.o cpy.o
+	gcc -o main prompt.o main.o command.o sls.o cdr.o mkr.o MAN.o chm.o pdr.o shw.o cpy.o
 
 prompt.o : prompt.c
 	gcc -c -o prompt.o prompt.c
@@ -19,6 +19,17 @@ mkr.o : mkr.c
 cpy.o : cpy.c
 	gcc -c -o cpy.o cpy.c
 
+MAN.o : MAN.c
+	gcc -c -o MAN.o MAN.c
+
+chm.o : chm.c
+	gcc -c -o chm.o chm.c
+
+pdr.o : pdr.c
+	gcc -c -o pdr.o pdr.c
+
+shw.o : shw.c
+	gcc -c -o shw.o shw.c
 
 main.o : main.c
 	gcc -c -o main.o main.c

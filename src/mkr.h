@@ -3,6 +3,5 @@
 
 #include <stdio.h>
 
-void mkr(char * [],int);
-void mkrMAN();
+int mkr(char * [],int);
 #endif

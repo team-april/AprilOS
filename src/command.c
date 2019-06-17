@@ -14,6 +14,9 @@
 #include "cdr.h"
 #include "mkr.h"
 #include "cpy.h"
+#include "chm.h"
+#include "pdr.h"
+#include "shw.h"
 
 #define MAX_COMMAND 1024
 
@@ -24,7 +27,7 @@ void strDis()
     fgets(str,MAX_COMMAND,stdin);
     if(strlen(str)!=0)
         str[strlen(str)-1]='\0';
-    char* comm[100] = {NULL,};
+    char* comm[MAX_COMMAND] = {NULL,};
     int i=0;
 
     if(strlen(str)!=0 && str[0] != ' '){
@@ -53,15 +56,22 @@ void command(char * comm[MAX_COMMAND], int i)
     else if(!strcmp(comm[0],"cpy"))
     { 
         cpy(comm,i);
+    else if(!strcmp(comm[0],"chm"))
+    { 
+        chm(comm,i);
     }
     else if(!strcmp(comm[0],"mkr"))
     {
         mkr(comm,i);
     }
-    else if(!strcmp(comm[0],"cdr"))
-    {}
-    else if(!strcmp(comm[0],"cdr"))
-    {}
+    else if(!strcmp(comm[0],"pdr"))
+    {
+        pdr(i);
+    }
+    else if(!strcmp(comm[0],"shw"))
+    {
+        shw(comm,i);
+    }
     else if(!strcmp(comm[0],"cdr"))
     {}
     else if(!strcmp(comm[0],"cdr"))
