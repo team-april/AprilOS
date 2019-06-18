@@ -31,6 +31,21 @@ int mkr(char * comm[MAX_PATH],int argc)
     }
     else if (argc == 3) // create dir with option
     {
+		if(comm[1][0] == '-')
+		{
+			while(1)
+			{
+				if(comm[1][i]=='m')
+				{
+					;
+				}
+				else if(comm[1][i] == 'p')
+				{
+					;
+				}
+				else
+					mkrMAN();
+		}
         //option
     }
     else // Create dir
@@ -76,6 +91,7 @@ int mkr(char * comm[MAX_PATH],int argc)
         free(buff);
         return 0;
     }
+	}
 }
 
 

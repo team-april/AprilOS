@@ -36,4 +36,7 @@ void mkrMAN()
 {
 
 }
-
+void kilMAN()
+{
+	;
+}
