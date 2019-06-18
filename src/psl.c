@@ -1,3 +1,9 @@
+/*******************************************************/
+/*file name : psl.c,psl.h                              */
+/*made by   : jun                                      */
+/*date      : 2019.06.18                               */
+/*This function is showing process list                */
+/*******************************************************/
 #include <stdio.h>
 #include <unistd.h>
 #include <dirent.h>

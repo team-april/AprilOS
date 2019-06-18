@@ -1,3 +1,9 @@
+/*******************************************************/
+/*file name : kil.c,kil.h                              */
+/*made by   : jun                                      */
+/*date      : 2019.06.18                               */
+/*This function is kill process              .         */
+/*******************************************************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <signal.h>
