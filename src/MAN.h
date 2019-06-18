@@ -8,5 +8,6 @@ void chmMAN();
 void pdrMAN();
 void shwMAN();
 void mkrMAN();
+void kilMAN();
 #endif
 
