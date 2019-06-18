@@ -13,26 +13,24 @@
 #include <string.h>
 
 #define MAX_COMMAND 1024
+#define MAX_PATH 1024
 void psl()
 {
 	DIR *dir;
 	struct dirent *entry;
 	struct stat fileStat;
 	
-	char termPath[256];
-	char cmdLine[256];
-	char UID;
 	int pid;
-	char path[256];
+	char path[MAX_PATH];
 	
 	dir = opendir("/proc");
 
-
-
-	printf("[PID]\t [NAME] \n");
+	printf(" [PID]\t [PPID]\t [NAME]\t[State]\t[UID]  \n");
 	while((entry =readdir(dir)) != NULL)
 	{
 		FILE *fp;
+		char * statDia[MAX_COMMAND];
+		char str[MAX_COMMAND];
 		lstat(entry->d_name,&fileStat);
 
 		if(!S_ISDIR(fileStat.st_mode))
@@ -40,34 +38,31 @@ void psl()
 		pid = atoi(entry->d_name);
 		if(pid <= 0)
 			continue;
-
-		char ppid[256];
-		sprintf(termPath,"/proc/%d/comm",pid);
 		sprintf(path,"/proc/%d/stat",pid);
-		printf("%s",path);
 		fp=fopen(path,"r");
-		fscanf(fp,"%*[^ ] %*[^ ] %*[^ ] %*[^ ]",ppid);
-		getCmdLine(termPath,cmdLine);
-		printf(" %d\t %s %s\n",pid,cmdLine,ppid);
+		memset(str,'\0',MAX_COMMAND);
+		fgets(str,MAX_COMMAND,fp);
+		statDis(statDia,str);
+		printf(" %s\t   %s\t %s\t   %s\t%d\t\n",statDia[0],statDia[3],statDia[1],statDia[2],fileStat.st_uid);
 		fclose(fp);
 		
 	}
 	closedir(dir);
 }
 
-int getCmdLine(char *file, char *buf) {
-	FILE *fp;
-	int i;
-	fp = fopen(file, "r");            //   /proc/pid/cmdline에 이름이 있습니다.
-
-	memset(buf, 0, sizeof(buf));
-	fgets(buf, 256, fp);
-	if(strlen(buf) != 0)
-		buf[strlen(buf)-1]='\0';
-	fclose(fp);
+void statDis(char * statDia[MAX_COMMAND], char * str)
+{
+	int i =0;
+	if(strlen(str) != 0 && str[0] != ' ')
+	{
+		char * temp = strtok(str," ");
+		while(temp != NULL)
+		{
+			statDia[i] = temp;
+			i++;
+			temp = strtok(NULL," ");
+		}
+	}
+		statDia[1][strlen(statDia[1])-1] = ' ';
+		statDia[1][0]=' ';
 }
-
-
-
-
-
