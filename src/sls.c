@@ -29,7 +29,7 @@ int sls(char * comm[MAX_COMMAND],int argc){
     struct stat st;
     char path[BUFSIZ+1];
 
-    int i = 0;
+    int i = 0, count = 0;
     int flag_l=0;
     int flag_t=0;
     int flag_a=0;
@@ -74,6 +74,13 @@ int sls(char * comm[MAX_COMMAND],int argc){
             if(flag_t==1) sls_t(path, d->d_name, &st);
             sls_(path, d->d_name, &st);
             if(flag_l==1 || flag_t==1)printf("\n");
+            else{
+                count++;
+                if(count==5){
+                    printf("\n");
+                    count=0;
+                }
+            }
         }
     }
 
@@ -118,7 +125,13 @@ void sls_t(char *pathname, char *file, struct stat *st)
 
 void sls_(char *pathname, char *file, struct stat *st)
 {
-    printf("%.15s    ", file);
+    if(S_ISDIR(st->st_mode)){
+        printf("\033[1;36m%-14s\033[0m",file);
+    }
+    else if(!strcmp(perm(st->st_mode),"rwxrwxrwx")){
+        printf("\033[1;33m%-14s\033[0m", file);
+    }
+    else printf("%-14s",file);
 }
 
 //파일 상태
