@@ -44,3 +44,11 @@ void echMAN()
 {
     ;
 }
+void staMAN()
+{
+    ;
+}
+void nflMAN()
+{
+    ;
+}
