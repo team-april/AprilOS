@@ -21,6 +21,7 @@
 #include "mov.h"
 #include "psl.h"
 #include "kil.h"
+#include "ech.h"
 
 #define MAX_COMMAND 1024
 
@@ -97,8 +98,10 @@ void command(char * comm[MAX_COMMAND], int i)
     {
         kil(comm,i);
     }
-    else if(!strcmp(comm[0],"cdr"))
-    {}
+    else if(!strcmp(comm[0],"ech"))
+    {
+        ech(comm,i);
+    }
     else if(!strcmp(comm[0],"cdr"))
     {}
     else if(!strcmp(comm[0],"cdr"))

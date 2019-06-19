@@ -40,3 +40,7 @@ void kilMAN()
 {
 	;
 }
+void echMAN()
+{
+    ;
+}
