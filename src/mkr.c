@@ -2,6 +2,7 @@
 /*file name : mkr.c,mkr.h                              */
 /*made by   : jun                                      */
 /*date      : 2019.06.13                               */
+/*            2019.06.19                               */
 /*This function is create directory                    */
 /*******************************************************/
 #include <stdio.h>
@@ -19,61 +20,67 @@
 int mkr(char * comm[MAX_PATH],int argc)
 {
     char * buff;
-    int  i=0;
+    int  i = 0;
+    int k=0;
     int flag=0;
-    buff = (char*)malloc(sizeof(char)*MAX_PATH);
-    char * mkrTEMP[MAX_COMMAND]={'\0'};
+    int pflag=0;
+    int mflag=0;
+    int count=1; // option count
     int dirLog=0;
+    char * mkrTEMP[MAX_COMMAND]={'\0'};
+
+    buff = (char*)malloc(sizeof(char)*MAX_PATH);
 
     if(argc > 3 || argc == 1) // command error
-    {
         mkrMAN();
-    }
-    else if (argc == 3) // create dir with option
-    {
-		if(comm[1][0] == '-')
-		{
-			while(1)
-			{
-				if(comm[1][i]=='m')
-				{
-					;
-				}
-				else if(comm[1][i] == 'p')
-				{
-					;
-				}
-				else
-					mkrMAN();
-		}
-        //option
-    }
     else // Create dir
     {
-        if(comm[1] != "-")
+        while(1) // option check
         {
-            if(strlen(comm[1])!=0){
-                char *temp = strtok(comm[1],"/");
-                while(temp != NULL)
-                {
-                    mkrTEMP[i] = temp;
-                    i++;
-                    temp = strtok(NULL, "/");
-                }
+            if(comm[1][0] == '-')
+            {
+                if(comm[1][count]=='m')
+                    mflag=1;
+                else if(comm[1][count] == 'p')
+                    pflag=1;
+                else if(comm[1][count] == ' ')
+                    break;
+                else
+                    mkrMAN();
             }
+            else
+                break;
+            count++;
         }
+
+        i=mkrDis(comm,mkrTEMP,k);            
+
         for(int j=0; j<i;j++)
         {
             dirLog++;
-            if(access(mkrTEMP[j],0) == -1 && j<i-1)
+            if(mflag == 0)
             {
-                printf("\"%s\" is not found\n",mkrTEMP[j]);
-                flag = 1;
-                break;
+                if(access(mkrTEMP[j],0) == -1 && j<i-1)
+                {
+                    printf("\"%s\" is not found\n",mkrTEMP[j]);
+                    flag = 1;
+                    break;
+                }
+                else
+                    chdir(mkrTEMP[j]);
             }
             else
-                chdir(mkrTEMP[j]);
+            {
+                if(access(mkrTEMP[j],0) == -1 && j<i-1)
+                {
+                    mkdir(mkrTEMP[j],0755);
+                    chdir(mkrTEMP[j]);
+                }
+                else
+                    chdir(mkrTEMP[j]);
+            }
         }
+
         if(flag == 0)
         {
             if(mkdir(mkrTEMP[i-1],0755)!=0)
@@ -84,14 +91,43 @@ int mkr(char * comm[MAX_PATH],int argc)
                     printf("Can not mkr");
             }
         }
-        for(int j=0; j<dirLog-1;j++)
-        {
-            chdir("..");
-        }
+
+        if(pflag != 1)
+            for(int j=0; j<dirLog-1;j++)
+                chdir("..");
+        else 
+            chdir(mkrTEMP[i-1]);
         free(buff);
         return 0;
     }
-	}
 }
 
 
+int mkrDis(char * comm[MAX_COMMAND],char * mkrTEMP[MAX_COMMAND],int i)
+{
+    if(comm[1][0] != '-')
+    {
+        if(strlen(comm[1])!=0){
+            char *temp = strtok(comm[1],"/");
+            while(temp != NULL)
+            {
+                mkrTEMP[i] = temp;
+                i++;
+                temp = strtok(NULL, "/");
+            }
+        }
+    }
+    else if(comm[1][0] == '-')
+    {
+        if(strlen(comm[2])!=0){
+            char *temp = strtok(comm[2],"/");
+            while(temp != NULL)
+            {
+                mkrTEMP[i] = temp;
+                i++;
+                temp = strtok(NULL, "/");
+            }
+        }
+    }
+    return i;
+}

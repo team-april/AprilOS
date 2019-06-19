@@ -4,4 +4,5 @@
 #include <stdio.h>
 
 int mkr(char * [],int);
+int mkrDis(char * [], char * [],int );
 #endif

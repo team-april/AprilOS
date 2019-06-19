@@ -12,6 +12,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "psl.h"
+
 #define MAX_COMMAND 1024
 #define MAX_PATH 1024
 void psl()
@@ -25,7 +27,7 @@ void psl()
 	
 	dir = opendir("/proc");
 
-	printf(" [PID]\t [PPID]\t [NAME]\t[State]\t[UID]  \n");
+	printf("[PID]\t[PPID]\t[STATE]\t [UID]\t[NAME]  \n");
 	while((entry =readdir(dir)) != NULL)
 	{
 		FILE *fp;
@@ -43,7 +45,7 @@ void psl()
 		memset(str,'\0',MAX_COMMAND);
 		fgets(str,MAX_COMMAND,fp);
 		statDis(statDia,str);
-		printf(" %s\t   %s\t %s\t   %s\t%d\t\n",statDia[0],statDia[3],statDia[1],statDia[2],fileStat.st_uid);
+		printf(" %s\t  %s\t   %.1s\t %d\t %s\t\n",statDia[0],statDia[3],statDia[2],fileStat.st_uid,statDia[1]);
 		fclose(fp);
 		
 	}

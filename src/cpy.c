@@ -175,7 +175,7 @@ int dirCpy(char * comm1, char * comm2){
     dir= opendir(comm1);
 
     if(NULL != dir){
-        while((dir_entry = readdir(dir)!=NULL)){
+        while(((dir_entry = readdir(dir))!=NULL)){
             if(!strcmp(dir_entry->d_name,".") || !strcmp(dir_entry->d_name,".."))
                 continue;
             
