@@ -4,5 +4,7 @@
 #include <stdio.h>
 
 int del(char * [],int);
+int dirDel(char * comm);
+
 #endif
 
