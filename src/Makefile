@@ -1,5 +1,6 @@
-main : prompt.o main.o command.o sls.o cdr.o mkr.o MAN.o chm.o pdr.o shw.o cpy.o del.o mov.o psl.o kil.o ech.o
-	gcc -o main prompt.o main.o command.o sls.o cdr.o mkr.o MAN.o chm.o pdr.o shw.o cpy.o del.o mov.o psl.o kil.o ech.o
+main : prompt.o main.o command.o sls.o cdr.o mkr.o MAN.o chm.o pdr.o shw.o cpy.o del.o mov.o psl.o kil.o ech.o sta.o nfl.o
+	gcc -o main prompt.o main.o command.o sls.o cdr.o mkr.o MAN.o chm.o pdr.o shw.o cpy.o del.o mov.o psl.o kil.o ech.o sta.o nfl.o
+	rm *.o
 
 prompt.o : prompt.c
 	gcc -c -o prompt.o prompt.c
@@ -45,6 +46,12 @@ kil.o : kil.c
 
 ech.o : ech.c
 	gcc -c -o ech.o ech.c
+	
+sta.o : sta.c
+	gcc -c -o sta.o sta.c
+
+nfl.o : nfl.c
+	gcc -c -o nfl.o nfl.c
 
 main.o : main.c
 	gcc -c -o main.o main.c

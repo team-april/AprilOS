@@ -22,6 +22,8 @@
 #include "psl.h"
 #include "kil.h"
 #include "ech.h"
+#include "sta.h"
+#include "nfl.h"
 
 #define MAX_COMMAND 1024
 
@@ -102,10 +104,14 @@ void command(char * comm[MAX_COMMAND], int i)
     {
         ech(comm,i);
     }
-    else if(!strcmp(comm[0],"cdr"))
-    {}
-    else if(!strcmp(comm[0],"cdr"))
-    {}
+    else if(!strcmp(comm[0],"sta"))
+    {
+        sta(comm,i);
+    }
+    else if(!strcmp(comm[0],"nfl"))
+    {
+        nfl(comm,i);
+    }
     else
     {
         printf(" \"%s\" is not command\n",comm[0]);

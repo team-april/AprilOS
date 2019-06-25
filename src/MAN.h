@@ -10,5 +10,7 @@ void shwMAN();
 void mkrMAN();
 void kilMAN();
 void echMAN();
+void staMAN();
+void nflMAN();
 #endif
 
