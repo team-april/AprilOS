@@ -112,7 +112,7 @@ int dirErrorCheck(char * comm[MAX_COMMAND], char * dir, int argc, int ck){
 void sls_l(char *pathname, char *file, struct stat *st)
 {
     printf("%c%s ",type(st->st_mode), perm(st->st_mode));
-    printf("%3u ",st->st_nlink);
+    printf("%3lu ",st->st_nlink);
     printf("%6s %6s ",getpwuid(st->st_uid)->pw_name, getgrgid(st->st_gid)->gr_name);
     printf("%9ld   ",st->st_size);
 }

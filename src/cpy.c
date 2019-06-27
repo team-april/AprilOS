@@ -144,7 +144,7 @@ int openCpy(int fd1, int fd2, char * comm1, char * comm2){
     }
 
 
-    if(comm2=='\0') sprintf(path,"./%s",comm1);
+    if(comm2==NULL) sprintf(path,"./%s",comm1);
     else sprintf(path,"./%s/%s",comm2, file[i-1]);
     if(access(path,0)==0){
         printf("There is same name file here.\n");
@@ -228,7 +228,7 @@ int sameCheck(){
     char ans[2];
     printf("Would you like to continue?(y/n)");
     while(1){
-        scanf("%s",&ans);
+        scanf("%s",ans);
         getchar();
         if(!strcmp(ans,"n")) return 0;
         else if(!strcmp(ans,"y")) {
