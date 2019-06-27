@@ -55,7 +55,7 @@ int sta(char * comm[MAX_COMMAND],int argc)
            printf("???\n");
    }
 
-   printf("I-node num\t:  %d\n",(long) st.st_ino);
+   printf("I-node num\t:  %ld\n",(long) st.st_ino);
    printf("Mode\t\t:  %lo(octal)\n",(unsigned long) st.st_mode);
    printf("Link count\t:  %ld\n",(long)st.st_nlink);
    printf("Ownership\t:  UID=%ld\tGID=%ld\n",(long)st.st_uid,(long)st.st_gid);
